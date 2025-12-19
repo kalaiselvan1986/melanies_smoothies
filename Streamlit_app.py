@@ -2,6 +2,7 @@
 import streamlit as st
 #from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
+import requests
 
 # Write directly to the app
 st.title(f"🥤Customize your smoothie!🥤 ")
@@ -37,7 +38,7 @@ if ingredients_list:
         #st.write('The search value for ', fruit_chosen,' is ', search_on, '.')       
         st.subheader(fruit_chosen + 'Nutrition Information')
         smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
-        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width='stretch')
    
   #st.write(ingredients_string)
     
